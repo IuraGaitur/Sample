@@ -21,6 +21,7 @@ public class SoundHelper : MonoBehaviour {
 			Debug.LogError("Multiple instances of SoundEffectsHelper!");
 		}
 		Instance = this;
+		DontDestroyOnLoad (Instance.gameObject);
 	}
 	
 	public void startSound()

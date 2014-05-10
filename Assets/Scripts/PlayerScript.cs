@@ -6,7 +6,8 @@ public class PlayerScript : MonoBehaviour {
 	public Vector2 speed = new Vector2(50,50);
 
 	public Vector2 movement;
-	
+
+	float mytimer = 2.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -16,41 +17,44 @@ public class PlayerScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		float inputX = Input.GetAxis("Horizontal");
-		float inputY = Input.GetAxis("Vertical");
+		mytimer -= Time.deltaTime;
+		if (mytimer <= 0) {
+						float inputX = Input.GetAxis ("Horizontal");
+						float inputY = Input.GetAxis ("Vertical");
 
-		movement = new Vector2(
+						movement = new Vector2 (
 			speed.x * inputX,
 			speed.y * inputY);
 
 
 
-		// 6 - Make sure we are not outside the camera bounds
-		var dist = (transform.position - Camera.main.transform.position).z;
+						// 6 - Make sure we are not outside the camera bounds
+						var dist = (transform.position - Camera.main.transform.position).z;
 		
-		var leftBorder = Camera.main.ViewportToWorldPoint(
-			new Vector3(0, 0, dist)
-			).x;
+						var leftBorder = Camera.main.ViewportToWorldPoint (
+			new Vector3 (0, 0, dist)
+						).x;
 		
-		var rightBorder = Camera.main.ViewportToWorldPoint(
-			new Vector3(1, 0, dist)
-			).x;
+						var rightBorder = Camera.main.ViewportToWorldPoint (
+			new Vector3 (1, 0, dist)
+						).x;
 		
-		var topBorder = Camera.main.ViewportToWorldPoint(
-			new Vector3(0, 0, dist)
-			).y;
+						var topBorder = Camera.main.ViewportToWorldPoint (
+			new Vector3 (0, 0, dist)
+						).y;
 		
-		var bottomBorder = Camera.main.ViewportToWorldPoint(
-			new Vector3(0, 1, dist)
-			).y;
+						var bottomBorder = Camera.main.ViewportToWorldPoint (
+			new Vector3 (0, 1, dist)
+						).y;
 		
-		transform.position = new Vector3(
-			Mathf.Clamp(transform.position.x, leftBorder, rightBorder-5),
-			Mathf.Clamp(transform.position.y, topBorder+4, bottomBorder-4),
+						transform.position = new Vector3 (
+			Mathf.Clamp (transform.position.x, leftBorder, rightBorder - 5),
+			Mathf.Clamp (transform.position.y, topBorder + 4, bottomBorder - 4),
 			transform.position.z
-			);
+						);
 		
-		// End of the update method
+						// End of the update method
+				}
 
 	}
 
@@ -69,7 +73,7 @@ public class PlayerScript : MonoBehaviour {
 
 	void OnDestroy() {
 
-		transform.parent.gameObject.AddComponent<GameOverScript> ();
+		transform.parent.gameObject.AddComponent<GameOverScript>();
 
 	}
 

@@ -4,11 +4,17 @@ using System.Collections;
 public class MenuScript : MonoBehaviour
 {
 	private GUISkin skin;
-	
+
+	void Awake(){
+
+	}
+
 	void Start()
 	{
 		// Load a skin for the buttons
 		skin = Resources.Load("play_Button") as GUISkin;
+
+
 	}
 
 	void OnGUI()
@@ -23,7 +29,7 @@ public class MenuScript : MonoBehaviour
 			// Center in X, 1/3 of the height in Y
 			new Rect(
 			Screen.width / 4 -(buttonWidth / 2),
-			(2 * Screen.height / 3) - (buttonHeight / 2),
+			(2 * Screen.height / 4) - (buttonHeight / 2),
 			buttonWidth,
 			buttonHeight
 			),
@@ -40,7 +46,7 @@ public class MenuScript : MonoBehaviour
 			// Center in X, 2/3 of the height in Y
 			new Rect(
 			Screen.width / 2 - (buttonWidth)-10,
-			(2 * Screen.height / 3) - (buttonHeight / 2),
+			(2 * Screen.height / 4) - (buttonHeight / 2),
 			buttonWidth,
 			buttonHeight
 			),
@@ -57,7 +63,7 @@ public class MenuScript : MonoBehaviour
 			// Center in X, 2/3 of the height in Y
 			new Rect(
 			Screen.width / 2 + (buttonWidth/4) ,
-			(2 * Screen.height / 3) - (buttonHeight / 2),
+			(2 * Screen.height / 4) - (buttonHeight / 2),
 			buttonWidth+20,
 			buttonHeight
 			),
@@ -75,7 +81,7 @@ public class MenuScript : MonoBehaviour
 			// Center in X, 2/3 of the height in Y
 			new Rect(
 			Screen.width / 2 +(2*buttonWidth),
-			(2 * Screen.height / 3) - (buttonHeight / 2),
+			(2 * Screen.height / 4) - (buttonHeight / 2),
 			buttonWidth,
 			buttonHeight
 			),

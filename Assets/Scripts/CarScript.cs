@@ -11,32 +11,34 @@ public class CarScript : MonoBehaviour {
 
 	void Awake(){
 
-		carTypes = getMyCars ();
+		//carTypes = getMyCars ();
 
-		Sprite spriteCar = Resources.Load("fruits_1", typeof(Sprite)) as Sprite;
+		//Sprite spriteCar = Resources.Load("fruits_1", typeof(Sprite)) as Sprite;
+
+		//GetComponent(SpriteRenderer).sprite = 
 
 		// Retrieve scripts to disable when not spawn
-		moveScript = GetComponent<MoveScript>();
+		//moveScript = GetComponent<MoveScript>();
 	}
 
 	// Use this for initialization
 	void Start () {
 	
 
-		hasSpawn = false;
+		//hasSpawn = false;
 		
 		// Disable everything
 		// -- collider
-		collider2D.enabled = false;
+		//collider2D.enabled = false;
 		// -- Moving
-		moveScript.enabled = false;
+		//moveScript.enabled = false;
 
 	}
 	
 	void Update()
 	{
 		// 2 - Check if the enemy has spawned.
-		if (hasSpawn == false)
+		/*if (hasSpawn == false)
 		{
 			if (renderer.IsVisibleFrom(Camera.main))
 			{
@@ -51,7 +53,7 @@ public class CarScript : MonoBehaviour {
 			{
 				Destroy(gameObject);
 			}
-		}
+		}*/
 	}
 	
 	// 3 - Activate itself.

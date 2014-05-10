@@ -9,11 +9,11 @@ using UnityEngine;
 public class ScrollingScript : MonoBehaviour
 {
 	
-	public Vector2 checkPoints = new Vector2(1,0);
+	public Vector2 checkPoints = new Vector2(9,0);
 
 	private int currentCheckPoint;
 
-	float mytimer = 5.0f;
+	float mytimer = 2.0f;
 	
 
 	/// <summary>
@@ -93,7 +93,7 @@ public class ScrollingScript : MonoBehaviour
 
 
 						// 4 - Loop
-						if (isLooping && currentCheckPoint <= checkPoints.x) {
+						if (isLooping) {
 								// Get the first object.
 								// The list is ordered from left (x position) to right.
 								Transform firstChild = backgroundPart.FirstOrDefault ();
@@ -126,20 +126,21 @@ public class ScrollingScript : MonoBehaviour
 										}
 								}
 						}
-						if (currentCheckPoint > checkPoints.x) {
+						/*if (currentCheckPoint > checkPoints.x) {
 								Transform firstChild = backgroundPart.FirstOrDefault ();
 								backgroundPart.Add (firstChild);
 
-								OnDestroy ();
+							Fill();
 
-						}
+						}*/
 				}
 		
 	}
 
-	void OnDestroy() {
+	void Fill() {
 		
-		transform.parent.gameObject.AddComponent<GameOverScript> ();
+		gameObject.AddComponent<GameOverScript> ();
+		//transform.parent.gameObject.AddComponent<GameOverScript> ();
 		
 	}
 

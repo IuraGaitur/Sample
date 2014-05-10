@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 
@@ -7,13 +8,12 @@ using UnityEngine;
 /// </summary>
 public class ScrollingScript : MonoBehaviour
 {
-
-
-
-	public int checkPoints;
+	
+	public Vector2 checkPoints = new Vector2(1,0);
 
 	private int currentCheckPoint;
 
+	float mytimer = 5.0f;
 	
 
 	/// <summary>
@@ -44,6 +44,7 @@ public class ScrollingScript : MonoBehaviour
 	// 3 - Get all the children
 	void Start()
 	{
+
 		// For infinite background only
 		if (isLooping)
 		{
@@ -73,60 +74,79 @@ public class ScrollingScript : MonoBehaviour
 	
 	void Update()
 	{
-		// Movement
-		Vector3 movement = new Vector3(
+		mytimer -= Time.deltaTime;
+		if (mytimer <= 0) {
+						// Movement
+						Vector3 movement = new Vector3 (
 			speed.x * direction.x,
 			speed.y * direction.y,
 			0);
-		
-		movement *= Time.deltaTime;
-		transform.Translate(movement);
-		
-		// Move the camera
-		if (isLinkedToCamera)
-		{
-			Camera.main.transform.Translate(movement);
-		}
+
+						movement *= Time.deltaTime;
+						transform.Translate (movement);
+
+						// Move the camera
+						if (isLinkedToCamera) {
+								Camera.main.transform.Translate (movement);
+						}
 
 
 
-		// 4 - Loop
-		if (isLooping && currentCheckPoint <= checkPoints)
-		{
-			// Get the first object.
-			// The list is ordered from left (x position) to right.
-			Transform firstChild = backgroundPart.FirstOrDefault();
+						// 4 - Loop
+						if (isLooping && currentCheckPoint <= checkPoints.x) {
+								// Get the first object.
+								// The list is ordered from left (x position) to right.
+								Transform firstChild = backgroundPart.FirstOrDefault ();
 			
-			if (firstChild != null)
-			{
-				// Check if the child is already (partly) before the camera.
-				// We test the position first because the IsVisibleFrom
-				// method is a bit heavier to execute.
-				if (firstChild.position.x < Camera.main.transform.position.x)
-				{
-					// If the child is already on the left of the camera,
-					// we test if it's completely outside and needs to be
-					// recycled.
-					if (firstChild.renderer.IsVisibleFrom(Camera.main) == false)
-					{
-						// Get the last child position.
-						Transform lastChild = backgroundPart.LastOrDefault();
-						Vector3 lastPosition = lastChild.transform.position;
-						Vector3 lastSize = (lastChild.renderer.bounds.max - lastChild.renderer.bounds.min);
+								if (firstChild != null) {
+										// Check if the child is already (partly) before the camera.
+										// We test the position first because the IsVisibleFrom
+										// method is a bit heavier to execute.
+										if (firstChild.position.x < Camera.main.transform.position.x) {
+												// If the child is already on the left of the camera,
+												// we test if it's completely outside and needs to be
+												// recycled.
+												if (firstChild.renderer.IsVisibleFrom (Camera.main) == false) {
+														// Get the last child position.
+														Transform lastChild = backgroundPart.LastOrDefault ();
+														Vector3 lastPosition = lastChild.transform.position;
+														Vector3 lastSize = (lastChild.renderer.bounds.max - lastChild.renderer.bounds.min);
 						
-						// Set the position of the recyled one to be AFTER
-						// the last child.
-						// Note: Only work for horizontal scrolling currently.
-						firstChild.position = new Vector3(lastPosition.x + lastSize.x, firstChild.position.y, firstChild.position.z);
+														// Set the position of the recyled one to be AFTER
+														// the last child.
+														// Note: Only work for horizontal scrolling currently.
+														firstChild.position = new Vector3 (lastPosition.x + lastSize.x, firstChild.position.y, firstChild.position.z);
 						
-						// Set the recycled child to the last position
-						// of the backgroundPart list.
-						backgroundPart.Remove(firstChild);
-						backgroundPart.Add(firstChild);
-					}
+														// Set the recycled child to the last position
+														// of the backgroundPart list.
+														backgroundPart.Remove (firstChild);
+														backgroundPart.Add (firstChild);
+														currentCheckPoint++;
+												}
+										}
+								}
+						}
+						if (currentCheckPoint > checkPoints.x) {
+								Transform firstChild = backgroundPart.FirstOrDefault ();
+								backgroundPart.Add (firstChild);
+
+								OnDestroy ();
+
+						}
 				}
-			}
-		}
+		
 	}
+
+	void OnDestroy() {
+		
+		transform.parent.gameObject.AddComponent<GameOverScript> ();
+		
+	}
+
+
+
+
+
+
 }
 

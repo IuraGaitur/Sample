@@ -3,86 +3,92 @@ using System.Collections;
 
 public class MenuScript : MonoBehaviour
 {
+	private GUISkin skin;
+	
+	void Start()
+	{
+		// Load a skin for the buttons
+		skin = Resources.Load("play_Button") as GUISkin;
+	}
+
 	void OnGUI()
 	{
-		const int buttonWidth = 84;
-		const int buttonHeight = 60;
+		const int buttonWidth = 60;
+		const int buttonHeight = 30;
+
+		GUI.skin = skin;
+
+		if (
+			GUI.Button(
+			// Center in X, 1/3 of the height in Y
+			new Rect(
+			Screen.width / 4 -(buttonWidth / 2),
+			(2 * Screen.height / 3) - (buttonHeight / 2),
+			buttonWidth,
+			buttonHeight
+			),
+			"Play!"
+			)
+			)
+		{
+			// Reload the level
+			Application.LoadLevel("Gameplay");
+		}
 		
-		// Draw a button to start the game
 		if (
 			GUI.Button(
 			// Center in X, 2/3 of the height in Y
 			new Rect(
-			Screen.width / 2 - (buttonWidth / 2),
+			Screen.width / 2 - (buttonWidth)-10,
 			(2 * Screen.height / 3) - (buttonHeight / 2),
 			buttonWidth,
 			buttonHeight
 			),
-			"Play"
+			"Options"
 			)
 			)
 		{
-			// On Click, load the first level.
-			// "Stage1" is the name of the first scene we created.
-			Application.LoadLevel("Gameplay");
+			// Reload the level
+			Application.LoadLevel("Options");
 		}
 
 		if (
 			GUI.Button(
 			// Center in X, 2/3 of the height in Y
 			new Rect(
-			Screen.width / 2 - (buttonWidth / 2),
+			Screen.width / 2 + (buttonWidth/4) ,
 			(2 * Screen.height / 3) - (buttonHeight / 2),
-			buttonWidth,
+			buttonWidth+20,
 			buttonHeight
 			),
-			"Options!"
+			"High Score"
 			)
 			)
 		{
-			// On Click, load the first level.
-			// "Stage1" is the name of the first scene we created.
-			Application.LoadLevel("Gameplay");
+			// Reload the level
+			Application.LoadLevel("HighScore");
 		}
+
 
 		if (
 			GUI.Button(
 			// Center in X, 2/3 of the height in Y
 			new Rect(
-			Screen.width / 2 - (buttonWidth / 2),
+			Screen.width / 2 +(2*buttonWidth),
 			(2 * Screen.height / 3) - (buttonHeight / 2),
 			buttonWidth,
 			buttonHeight
 			),
-			"HighScore!"
+			"Exit"
 			)
 			)
 		{
-			// On Click, load the first level.
-			// "Stage1" is the name of the first scene we created.
-			Application.LoadLevel("Gameplay");
+			// Reload the level
+			Application.Quit();
 		}
-
-		if (
-			GUI.Button(
-			// Center in X, 2/3 of the height in Y
-			new Rect(
-			Screen.width / 2 - (buttonWidth / 2),
-			(2 * Screen.height / 3) - (buttonHeight / 2),
-			buttonWidth,
-			buttonHeight
-			),
-			"Exit!"
-			)
-			)
-		{
-			// On Click, load the first level.
-			// "Stage1" is the name of the first scene we created.
-			Application.LoadLevel("Gameplay");
-		}
-
-
-
 
 	}
+
+
+
 }

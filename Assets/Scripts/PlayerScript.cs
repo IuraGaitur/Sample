@@ -6,6 +6,7 @@ public class PlayerScript : MonoBehaviour {
 	public Vector2 speed = new Vector2(50,50);
 
 	public Vector2 movement;
+	
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +22,7 @@ public class PlayerScript : MonoBehaviour {
 		movement = new Vector2(
 			speed.x * inputX,
 			speed.y * inputY);
+
 
 
 		// 6 - Make sure we are not outside the camera bounds
@@ -43,8 +45,8 @@ public class PlayerScript : MonoBehaviour {
 			).y;
 		
 		transform.position = new Vector3(
-			Mathf.Clamp(transform.position.x, leftBorder, rightBorder),
-			Mathf.Clamp(transform.position.y, topBorder, bottomBorder),
+			Mathf.Clamp(transform.position.x, leftBorder, rightBorder-5),
+			Mathf.Clamp(transform.position.y, topBorder+4, bottomBorder-4),
 			transform.position.z
 			);
 		
@@ -64,5 +66,12 @@ public class PlayerScript : MonoBehaviour {
 
 
 	}
+
+	void OnDestroy() {
+
+		transform.parent.gameObject.AddComponent<GameOverScript> ();
+
+	}
+
 
 }

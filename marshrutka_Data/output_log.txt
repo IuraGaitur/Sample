@@ -11,63 +11,14 @@ Platform assembly: C:\Users\Iura\Documents\Marshrutka\marshrutka_Data\Managed\Un
 Loading C:\Users\Iura\Documents\Marshrutka\marshrutka_Data\Managed\UnityEngine.dll into Unity Child Domain
 Platform assembly: C:\Users\Iura\Documents\Marshrutka\marshrutka_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading C:\Users\Iura\Documents\Marshrutka\marshrutka_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-- Completed reload, in  0.097 seconds
+- Completed reload, in  0.165 seconds
 desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 Platform assembly: C:\Users\Iura\Documents\Marshrutka\marshrutka_Data\Managed\System.Core.dll (this message is harmless)
-Level 'Stage1' (-1) couldn't be loaded because it has not been added to the build settings.
-To add a level to the build settings use the menu File->Build Settings...
- 
-(Filename:  Line: 292)
+UnloadTime: 0.674650 ms
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Level 'Stage1' (-1) couldn't be loaded because it has not been added to the build settings.
-To add a level to the build settings use the menu File->Build Settings...
- 
-(Filename:  Line: 292)
-
-Level 'Stage1' (-1) couldn't be loaded because it has not been added to the build settings.
-To add a level to the build settings use the menu File->Build Settings...
- 
-(Filename:  Line: 292)
-
-Level 'Stage1' (-1) couldn't be loaded because it has not been added to the build settings.
-To add a level to the build settings use the menu File->Build Settings...
- 
-(Filename:  Line: 292)
-
-Level 'Stage1' (-1) couldn't be loaded because it has not been added to the build settings.
-To add a level to the build settings use the menu File->Build Settings...
- 
-(Filename:  Line: 292)
-
-Level 'Stage1' (-1) couldn't be loaded because it has not been added to the build settings.
-To add a level to the build settings use the menu File->Build Settings...
- 
-(Filename:  Line: 292)
-
-Level 'Stage1' (-1) couldn't be loaded because it has not been added to the build settings.
-To add a level to the build settings use the menu File->Build Settings...
- 
-(Filename:  Line: 292)
-
-Level 'Stage1' (-1) couldn't be loaded because it has not been added to the build settings.
-To add a level to the build settings use the menu File->Build Settings...
- 
-(Filename:  Line: 292)
-
-Level 'Stage1' (-1) couldn't be loaded because it has not been added to the build settings.
-To add a level to the build settings use the menu File->Build Settings...
- 
-(Filename:  Line: 292)
-
-Level 'Stage1' (-1) couldn't be loaded because it has not been added to the build settings.
-To add a level to the build settings use the menu File->Build Settings...
- 
-(Filename:  Line: 292)
-
-Level 'Stage1' (-1) couldn't be loaded because it has not been added to the build settings.
-To add a level to the build settings use the menu File->Build Settings...
- 
-(Filename:  Line: 292)
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 164.
+Total: 2.254332 ms (FindLiveObjects: 0.023093 ms CreateObjectMapping: 0.028041 ms MarkObjects: 0.294162 ms  DeleteObjects: 0.027491 ms)
 

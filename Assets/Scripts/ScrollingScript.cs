@@ -7,6 +7,15 @@ using UnityEngine;
 /// </summary>
 public class ScrollingScript : MonoBehaviour
 {
+
+
+
+	public int checkPoints;
+
+	private int currentCheckPoint;
+
+	
+
 	/// <summary>
 	/// Scrolling speed
 	/// </summary>
@@ -78,9 +87,11 @@ public class ScrollingScript : MonoBehaviour
 		{
 			Camera.main.transform.Translate(movement);
 		}
-		
+
+
+
 		// 4 - Loop
-		if (isLooping)
+		if (isLooping && currentCheckPoint <= checkPoints)
 		{
 			// Get the first object.
 			// The list is ordered from left (x position) to right.
